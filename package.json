@@ -4,7 +4,9 @@
   "description": "Recommending movies to friends demo app: React + GraphQl",
   "main": "./server/src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/src/index.js",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install && cd.. server && npm install"
   },
   "author": "Olga Budytska",
   "license": "MIT",
