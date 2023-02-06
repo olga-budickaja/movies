@@ -20,7 +20,7 @@ const typeDefs = fs.readFileSync(
     'utf8'
 );
 
-const context = ({ req, res }) => ({
+const context = ({ req }) => ({
     locale: req?.headers?.locale || 'en-US'
 })
 
@@ -53,21 +53,9 @@ async function startApolloServer(typeDefs, resolvers) {
         res.sendFile(path.join(__dirname, '../../client', 'build', 'index.html'))
     });
 
-    await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
-    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+    await new Promise(resolve => httpServer.listen({ port: process.env.PORT || 80 }, resolve));
+    console.log(`🚀 Server ready at http://localhost:${process.env.PORT || 80}${server.graphqlPath}`);
 }
 
 startApolloServer(typeDefs, resolvers);
 
-// app.use(express.static(path.join(__dirname, '../../client', 'build')));
-// app.use(express.static('public'));
-//
-// app.get('/rest', (req, res) => {
-//     res.json({data: 'rest work'})
-// });
-//
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../../client', 'build', 'index.html'))
-// });
-//
-// httpServer.listen({port: 8008})
