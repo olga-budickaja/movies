@@ -1,0 +1,14 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "Recommending movies to friends demo app: React + GraphQl",
+  "main": "./server/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olga Budytska",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}
