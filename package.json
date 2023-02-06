@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/src/index.js",
     "build": "cd client && npm run build",
-    "install": "cd client && npm install && cd ../server && npm install"
+    "install": "cd client && npm install --legacy-peer-deps && cd ../server && npm install"
   },
   "author": "Olga Budytska",
   "license": "MIT",
