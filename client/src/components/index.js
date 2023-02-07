@@ -4,6 +4,7 @@ import MovieCardMenu from "./MovieCardMenu";
 import MovieCardSelected from "./MovieCardSelected";
 import ConfirmModal from "./ConfirmModal";
 import ShareIcon from "./ShareIcon";
+import Filters from "./Filters";
 
 export {
     Navigation,
@@ -11,5 +12,6 @@ export {
     MovieCardMenu,
     MovieCardSelected,
     ConfirmModal,
-    ShareIcon
+    ShareIcon,
+    Filters
 }

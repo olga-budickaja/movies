@@ -8,7 +8,7 @@ import {
     ListItemButton, ListItemIcon, ListItemText,
     Toolbar,
     Typography,
-    Hidden, Button, Link
+    Hidden, Link, createTheme, ThemeProvider, Tooltip
 } from "@mui/material";
 import SettingsIcon from '@mui/icons-material/Settings';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -18,6 +18,8 @@ import { AppContext } from "../../context/appContext";
 import { LOCALES } from "../../const";
 import { FormattedMessage } from "react-intl";
 import translate from "../../utils/translate";
+import { Logo, LogoContainer, Span } from "./css";
+import logo from "../../assets/logo1.png"
 const Navigation = () => {
     const [toggleDrawer, setToggleDrawer] = useState(false);
     const { state, dispatch } = useContext(AppContext);
@@ -28,6 +30,16 @@ const Navigation = () => {
             locale
         })
     }, []);
+
+    const darkTheme = createTheme({
+        palette: {
+            mode: 'dark',
+            primary: {
+                main: '#0D0D0B',
+            },
+        },
+    });
+
     const list = () => (
         <Box
             sx={{ width: 250 }}
@@ -55,7 +67,9 @@ const Navigation = () => {
 
 
     return (
+        <ThemeProvider theme={darkTheme}>
         <Box sx={{ flexGrow: 1 }}>
+
             <AppBar position="static">
                 <Toolbar>
                     <Hidden only={['lg', 'xl']}>
@@ -70,11 +84,14 @@ const Navigation = () => {
                             <MenuIcon/>
                         </IconButton>
                     </Hidden>
-                    <Link component={RouterLink} to="/" sx={{ flexGrow: 1 }}>
-                        <Typography variant="h6" component="div" sx={{ color: "white" }}>
-                            <FormattedMessage id="navigation.title"/>
-                        </Typography>
-                    </Link>
+                        <Link component={RouterLink} to="/" sx={{ flexGrow: 1 }}>
+                            <LogoContainer>
+                                <Logo src={logo} alt="logo"/>
+                                <Typography variant="h6" component="div" sx={{ color: "white" }}>
+                                    <FormattedMessage id="navigation.title" values={{ span: chunks => <Span>{chunks}</Span> }}/>
+                                </Typography>
+                            </LogoContainer>
+                        </Link>
                     <Box>
                         <IconButton
                             onClick={() => setLanguage(LOCALES.ENGLISH)}
@@ -92,13 +109,15 @@ const Navigation = () => {
                         </IconButton>
                     </Box>
                     <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
-                        <Button
-                            component={RouterLink}
-                            to="settings"
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            <FormattedMessage id="navigation.settings"/>
-                        </Button>
+                        <Tooltip title={translate('navigation.settings')}>
+                            <IconButton
+                                component={RouterLink}
+                                to="settings"
+                                sx={{ color: 'white' }}
+                            >
+                                <SettingsIcon sx={{ fill: '#F27329' }} />
+                            </IconButton>
+                        </Tooltip>
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -110,6 +129,7 @@ const Navigation = () => {
                 {list()}
             </Drawer>
         </Box>
+        </ThemeProvider>
     );
 }
 

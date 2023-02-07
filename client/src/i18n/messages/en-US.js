@@ -3,7 +3,7 @@ import { LOCALES } from "../../const";
 export default {
     [LOCALES.ENGLISH]: {
         navigation: {
-            title: 'Movies Recommendation',
+            title: 'Movies<span>Recommendation</span>',
             settings: 'Settings'
         },
         selected: {

@@ -1,5 +1,5 @@
 import { Box, Grid, Pagination, Paper, Stack } from "@mui/material";
-import { MovieCard } from "../../components";
+import { Filters, MovieCard } from "../../components";
 import { useQuery } from '@apollo/client';
 import { MOVIES_QUERY } from "./queries";
 import { Link } from "react-router-dom"
@@ -19,14 +19,18 @@ const Home = () => {
         return 'Error';
     }
 
+    // const onSubmit = (data) => {
+    //     console.log(data)
+    // }
+
     return (
         <Box sx={{ flexGrow: 1, marginTop: "24px" }}>
             <Grid container spacing={2}>
-                <Grid item md={12}>
-                    <Paper elevation={3}>
-                        Filters section
-                    </Paper>
-                </Grid>
+                {/*<Grid item md={12}>*/}
+                {/*    <Paper elevation={3}>*/}
+                {/*        <Filters onSubmit={onSubmit} />*/}
+                {/*    </Paper>*/}
+                {/*</Grid>*/}
                 <Grid item xs={12} md={8}>
                     <Paper elevation={3}>
                         <Box sx={{ flexGrow: 1, padding: 1 }}>

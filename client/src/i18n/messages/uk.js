@@ -3,7 +3,7 @@ import { LOCALES } from "../../const";
 export default {
     [LOCALES.UKRAINIAN]: {
         navigation: {
-            title: 'Рекомендовані фільми',
+            title: 'Рекомендовані<span>Фільми</span>',
             settings: 'Налаштування'
         },
         selected : {
