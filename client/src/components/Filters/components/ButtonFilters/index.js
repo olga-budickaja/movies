@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 export const ButtonFilters = () => {
     return (
         <ThemeProvider theme={theme}>
-            <Button variant="contained" type="submit" size="large" sx={{ left: '8px', color: 'white' }}>
+            <Button variant="contained" type="submit" size="large" sx={{ left: '8px', color: 'white', height: '56px' }}>
                 <FormattedMessage id="filters.button" />
             </Button>
         </ThemeProvider>

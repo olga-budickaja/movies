@@ -19,7 +19,17 @@ export default {
         },
         filters: {
             genre: 'Genres',
-            button: 'Sort'
+            button: 'Sort',
+            year: 'Year',
+            sort_by: 'Sort by',
+            sort: {
+                popularity: 'Popularity',
+                release_date: 'Release Date',
+                revenue: 'Revenue',
+                original_title: 'Original title',
+                vote_average: 'Vote Average',
+                vote_count: 'Vote_count'
+            },
         }
     }
 }

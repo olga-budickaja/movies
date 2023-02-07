@@ -19,7 +19,17 @@ export default {
         },
         filters: {
             genre: 'Жанри',
-            button: 'Сортувати'
+            button: 'Сортувати',
+            year: 'Рік',
+            sort_by: 'Сортувати по',
+            sort: {
+                popularity: 'Популярності',
+                release_date: 'Даті випуску',
+                revenue: 'Дохід',
+                original_title: 'Оригінальна назва',
+                vote_average: 'Середньому голосуванню',
+                vote_count: 'Підрахунку голосів'
+            },
         }
     }
 }
