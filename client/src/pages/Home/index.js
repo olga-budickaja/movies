@@ -2,15 +2,16 @@ import { Box, Grid, Pagination, Paper, Stack } from "@mui/material";
 import { Filters, MovieCard } from "../../components";
 import { useQuery } from '@apollo/client';
 import { MOVIES_QUERY } from "./queries";
-import { Link } from "react-router-dom"
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useMovies } from "../../hooks/useMovies";
 import SelectedMovieSection from "../../components/SelectedMovieSection";
+import { useFilters } from "../../hooks/useFilters";
 
 const Home = () => {
-    const [page, setPage] = useState(1);
-    const { loading, error, data } = useQuery(MOVIES_QUERY, { variables: { page }});
+    const { filter, setFilter, setPage } = useFilters();
+    const {loading, error, data } = useQuery(MOVIES_QUERY, { variables: {filter}});
     const { selectedMovies, selectMovie, deleteMovie } = useMovies();
+
     const paginationHandler = (event, page) => {
         setPage(page)
     }
@@ -19,18 +20,20 @@ const Home = () => {
         return 'Error';
     }
 
-    // const onSubmit = (data) => {
-    //     console.log(data)
-    // }
+    const onSubmit = (data) => {
+        setFilter(data);
+    }
+
+    const pagesCount = data?.movies?.totalPages < 500 ? data?.movies?.totalPages : 499;
 
     return (
         <Box sx={{ flexGrow: 1, marginTop: "24px" }}>
             <Grid container spacing={2}>
-                {/*<Grid item md={12}>*/}
-                {/*    <Paper elevation={3}>*/}
-                {/*        <Filters onSubmit={onSubmit} />*/}
-                {/*    </Paper>*/}
-                {/*</Grid>*/}
+                <Grid item md={12}>
+                    <Paper elevation={3}>
+                        <Filters onSubmit={onSubmit} initialValues={filter} />
+                    </Paper>
+                </Grid>
                 <Grid item xs={12} md={8}>
                     <Paper elevation={3}>
                         <Box sx={{ flexGrow: 1, padding: 1 }}>
@@ -66,9 +69,9 @@ const Home = () => {
                     <Stack spacing={2}>
                         <Pagination
                             component={Link}
-                            count={499}
-                            page={page}
-                            to={`/${page}`}
+                            count={pagesCount}
+                            page={filter.page}
+                            // to={`/${filter.page}`}
                             onChange={paginationHandler}
                         />
                     </Stack>

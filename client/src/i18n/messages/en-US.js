@@ -17,5 +17,8 @@ export default {
                 copy: 'Copied!'
             }
         },
+        filters: {
+            genre: 'Genres'
+        }
     }
 }

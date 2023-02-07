@@ -1,6 +1,5 @@
 const { IMAGE_BASE_PATH } = require('../../../config');
 const { format } = require('date-fns');
-// const { Genre } = require('./Genre')
 class Movie {
     constructor(movie) {
         this.movie = movie;
@@ -19,8 +18,7 @@ class Movie {
         this.runtime = movie.runtime;
         this.revenue = movie.revenue;
         this.status = movie.status;
-        this.tagline =movie.tagline;
-        // this.genres = movie.genres.map((genre) => new Genre(genre));
+        this.tagline = movie.tagline;
     }
     releaseDate(params) {
         try {

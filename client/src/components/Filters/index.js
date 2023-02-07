@@ -1,29 +1,31 @@
-import { Field, Form } from "react-final-form";
+import { Form } from "react-final-form";
+import { useQuery } from "@apollo/client";
+import { GENRES_QUERY } from "./queries";
+import { Box } from "@mui/material";
+import { Genres } from "./components";
 
-const Filters = ({onSubmit}) => {
+const Filters = ({onSubmit, initialValues}) => {
+    const { loading, error, data } = useQuery(GENRES_QUERY);
+
+    if (loading) {
+        return 'Loading...'
+    }
+
+    if (error) {
+        return 'Error';
+    }
+
     return (
         <Form
             onSubmit={onSubmit}
+            initialValues={initialValues}
             render={({ handleSubmit, form, submitting, pristine, values }) => (
                 <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>First Name</label>
-                        <Field
-                            name="firstName"
-                            component="input"
-                            type="text"
-                            placeholder="First Name"
-                        />
-                    </div>
-                    <div>
-                        <label>Last Name</label>
-                        <Field
-                            name="lastName"
-                            component="input"
-                            type="text"
-                            placeholder="Last Name"
-                        />
-                    </div>
+                    <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', p: 3}}>
+                        <Box sx={{display: 'flex'}}>
+                            <Genres data={data} />
+                        </Box>
+                    </Box>
                     <button type="submit" disabled={submitting || pristine}>
                         Submit
                     </button>

@@ -17,5 +17,8 @@ export default {
                 copy: 'Зкопійовано!'
             }
         },
+        filters: {
+            genre: 'Жанри'
+        }
     }
 }

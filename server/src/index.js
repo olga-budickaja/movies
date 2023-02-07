@@ -52,7 +52,7 @@ async function startApolloServer(typeDefs, resolvers) {
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, '../../client', 'build', 'index.html'))
     });
-
+    //
     // await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve));
     // console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 

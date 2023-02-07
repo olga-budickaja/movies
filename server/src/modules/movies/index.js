@@ -14,8 +14,14 @@ const getPopular = async (page, language) => {
 const getDetails = (id, language) => {
     return axios.get(`${BASE_URL}movie/${id}?api_key=${api_key}&language=${language}`);
 }
+const discoverMovie = async(filter, language) => {
+    const result = await axios.get(`${BASE_URL}discover/movie?api_key=${api_key}&language=${language}&page=${filter.page}&year=${filter.year}&sort_by=${filter.sortBy}.${filter.sortDirection}&include_adult=${filter.includeAdult}&primary_release_year=${filter.primaryReleaseYear}&with_genres=${filter.genre}`);
+
+    return new Movies(result.data);
+}
 
 module.exports = {
     getPopular,
-    getDetails
+    getDetails,
+    discoverMovie
 }
