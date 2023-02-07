@@ -18,7 +18,8 @@ export default {
             }
         },
         filters: {
-            genre: 'Жанри'
+            genre: 'Жанри',
+            button: 'Сортувати'
         }
     }
 }

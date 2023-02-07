@@ -18,7 +18,8 @@ export default {
             }
         },
         filters: {
-            genre: 'Genres'
+            genre: 'Genres',
+            button: 'Sort'
         }
     }
 }

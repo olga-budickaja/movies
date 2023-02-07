@@ -23,6 +23,7 @@ const Home = () => {
     const onSubmit = (data) => {
         setFilter(data);
     }
+    console.log(filter)
 
     const pagesCount = data?.movies?.totalPages < 500 ? data?.movies?.totalPages : 499;
 
@@ -30,7 +31,7 @@ const Home = () => {
         <Box sx={{ flexGrow: 1, marginTop: "24px" }}>
             <Grid container spacing={2}>
                 <Grid item md={12}>
-                    <Paper elevation={3}>
+                    <Paper elevation={3} sx={{ p: 3 }}>
                         <Filters onSubmit={onSubmit} initialValues={filter} />
                     </Paper>
                 </Grid>

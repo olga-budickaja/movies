@@ -1,12 +1,12 @@
 import { useState, useCallback } from 'react';
-// import { SORT_DIRECTION } from '../../const';
+import { SORT_DIRECTION } from '../../const';
 
 export const useFilters = () => {
     const [filter, setFilterFields] = useState({
         page: 1,
-        // sortBy: 'popularity',
-        // sortDirection: SORT_DIRECTION.DESC,
-        // includeAdult: true
+        sortBy: 'popularity',
+        sortDirection: SORT_DIRECTION.DESC,
+        includeAdult: true
     });
 
     const setPage = useCallback((page) => {
@@ -20,8 +20,9 @@ export const useFilters = () => {
         setFilterFields({
             ...filter,
             ...filterFields,
-            // year: +filterFields.year,
-            // primaryReleaseYear: +filterFields.primaryReleaseYear
+            year: +filterFields.year,
+            primaryReleaseYear: +filterFields.primaryReleaseYear,
+            genre: filterFields.genre
         })
     }, [filter])
 
